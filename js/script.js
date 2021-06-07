@@ -1,5 +1,5 @@
 // Game Constants & Variables
-let inputDir = {x: 0, y: 0};
+let inputDir = {x: 0, y: 0}; 
 const foodSound = new Audio('music/food.mp3');
 const gameOverSound = new Audio('music/gameover.mp3');
 const moveSound = new Audio('music/move.mp3');
@@ -21,25 +21,22 @@ function main(ctime) {
         return;
     }
     lastPaintTime = ctime;
-    score = 0;
     gameEngine();
 }
 
 function isCollide(snake) {
-    // If you bump into yourself
+    // If you bump into yourself 
     for (let i = 1; i < snakeArr.length; i++) {
         if(snake[i].x === snake[0].x && snake[i].y === snake[0].y){
             return true;
         }
     }
-
     // If you bump into the wall
-        if(snake[0].x >= 18 || snake[0].x <=0 || snake[0].y >= 18 || snake[0].y <=0){
-         return true;   
-        }
-      
-      return false; 
+    if(snake[0].x >= 18 || snake[0].x <=0 || snake[0].y >= 18 || snake[0].y <=0){
+        return true;
+    }
         
+    return false;
 }
 
 function gameEngine(){
@@ -47,11 +44,11 @@ function gameEngine(){
     if(isCollide(snakeArr)){
         gameOverSound.play();
         musicSound.pause();
-        inputDir =  {x: 0, y: 0};
+        inputDir =  {x: 0, y: 0}; 
         alert("Game Over. Press any key to play again!");
         snakeArr = [{x: 13, y: 15}];
         musicSound.play();
-        score = 0;
+        score = 0; 
     }
 
     // If you have eaten the food, increment the score and regenerate the food
@@ -71,19 +68,21 @@ function gameEngine(){
     }
 
     // Moving the snake
-    for (let i = snakeArr.length - 2; i>=0; i--) {
-        snakeArr[i+1] = {...snakeArr[i]};    
+    for (let i = snakeArr.length - 2; i>=0; i--) { 
+        snakeArr[i+1] = {...snakeArr[i]};
     }
 
     snakeArr[0].x += inputDir.x;
     snakeArr[0].y += inputDir.y;
 
-    // Part 2: Display the snake
+    // Part 2: Display the snake and Food
+    // Display the snake
     board.innerHTML = "";
-    snakeArr.forEach((e, index) => {
+    snakeArr.forEach((e, index)=>{
         snakeElement = document.createElement('div');
         snakeElement.style.gridRowStart = e.y;
         snakeElement.style.gridColumnStart = e.x;
+
         if(index === 0){
             snakeElement.classList.add('head');
         }
@@ -92,31 +91,29 @@ function gameEngine(){
         }
         board.appendChild(snakeElement);
     });
-
-    // Part 3: Display the food
+    // Display the food
     foodElement = document.createElement('div');
     foodElement.style.gridRowStart = food.y;
     foodElement.style.gridColumnStart = food.x;
     foodElement.classList.add('food')
     board.appendChild(foodElement);
+
+
 }
 
 
-
-
-
 // Main logic starts here
-
+// musicSound.play();
 let hiscore = localStorage.getItem("hiscore");
 if(hiscore === null){
     hiscoreval = 0;
     localStorage.setItem("hiscore", JSON.stringify(hiscoreval))
 }
-else
-{
+else{
     hiscoreval = JSON.parse(hiscore);
     hiscoreBox.innerHTML = "High Score: " + hiscore;
 }
+
 window.requestAnimationFrame(main);
 window.addEventListener('keydown', e =>{
     inputDir = {x: 0, y: 1} // Start the game
@@ -145,8 +142,8 @@ window.addEventListener('keydown', e =>{
             inputDir.x = 1;
             inputDir.y = 0;
             break;
-    
         default:
             break;
     }
+
 });
