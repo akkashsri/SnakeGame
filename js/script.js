@@ -4,7 +4,7 @@ const foodSound = new Audio('music/food.mp3');
 const gameOverSound = new Audio('music/gameover.mp3');
 const moveSound = new Audio('music/move.mp3');
 const musicSound = new Audio('music/music.mp3');
-let speed = 10;
+let speed = 8;
 let score = 0;
 let lastPaintTime = 0;
 let snakeArr = [
@@ -116,7 +116,7 @@ else{
 
 window.requestAnimationFrame(main);
 window.addEventListener('keydown', e =>{
-    inputDir = {x: 0, y: 1} // Start the game
+    inputDir = {x: 0, y: -1} // Start the game
     moveSound.play();
     switch (e.key) {
         case "ArrowUp":
@@ -147,3 +147,17 @@ window.addEventListener('keydown', e =>{
     }
 
 });
+
+// Speed
+document.addEventListener('keydown', function (event) {
+    if (event.key === 'h') {
+      speed = 12;
+    }
+    if (event.key === 'm') {
+     speed = 8;
+    }
+    if (event.key === 'e') {
+        speed = 6;
+       }
+  });
+

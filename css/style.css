@@ -17,24 +17,26 @@
 
 #scoreBox{
     position: absolute;
-    top: 59px;
-    right: 100px;
+    top: 170px;
+    right: 60px;
     font-size: 39px;
     font-weight: bold;
     font-family: 'New Tegomin', serif;
+    
 }
 
 #hiscoreBox{
     position: absolute;
-    top: 109px;
-    right: 100px;
+    top: 220px;
+    right: 60px;
     font-size: 39px;
     font-weight: bold;
     font-family: 'New Tegomin', serif;
+    
 }
 
 #board{
-    background: linear-gradient(rgb(170, 236, 170),rgb(236, 236, 167));
+    background: url(../img/board.jpg);
     width: 90vmin;
     height: 92vmin;
     border: 2px solid black;
@@ -44,21 +46,54 @@
 
 }
 
+.textBox2{
+    position: absolute;
+    background: linear-gradient(lightgreen, black);
+    top: 140px;
+    left: 15px;
+    height: 200px;
+    width: 350px;
+    border: 2px solid grey;
+    border-radius: 20px;
+}
+
+.textBox1{
+    position: absolute;
+    background: linear-gradient(lightgreen, black);
+    top: 140px;
+    right: 15px;
+    height: 200px;
+    width: 350px;
+    border: 2px solid grey;
+    border-radius: 20px;
+}
+
+
+#level{
+    position: absolute;
+    top: 140px;
+    left: 50px;
+    font-size: 30px;
+    font-weight: bold;
+    font-family: 'New Tegomin', serif;
+    
+}
+
 .head{
-    background-color: white;
-    border: 2px solid red;
+    background-color: black;
+    
     transform:  scale(1.02);
-    border-radius: 50px;
+    
 }
 
 .snake{
-    background-color: black;
+    background-color: grey;
     border: .25vmin solid white;
-    border-radius: 50px;
+    
 }
 
 .food{
     background-color: yellow;
     border:  .25vmin solid black;
-    border-radius:  10px;
+    border-radius:  50px;
 }
